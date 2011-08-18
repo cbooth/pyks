@@ -1,21 +1,14 @@
 #!/usr/bin/env python
 
 """Python Kiloseconds Manipulation Module
-Version: 1.0.0
+Version: 1.0.1
 Created by Callum Booth (callumwbooth@gmail.com)
-Creative Commons Attribution-ShareAlike 3.0 Unported License
-Homepage: https://github.com/cbooth/pyks
+Creative Commons Attribution-ShareAlike 3.0 Unported License (CC BY-SA 3.0)
+Homepage: https://cbooth.github.com/pyks
 Based on the Python code from: https://github.com/bavardage/Kiloseconds
 """
 
 import time
-
-class PyksInternalError(Exception):
-        """Base class for errors in pyks."""
-        def __init__(self, value):
-                self.parameter = value
-        def __str__(self):
-                return repr(self.parameter)
 
 def time_to_ks(local_time):
         s_hour = float(local_time.tm_hour) * 3600
