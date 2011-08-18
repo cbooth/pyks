@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+
+<title>Pyks: Documentation</title>
+<link href="favicon.png" rel="SHORTCUT ICON">
+
+  <style type="text/css">
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    #container {
+      margin: 0 auto;
+      width: 700px;
+    }
+    h1 { font-size: 3.8em; color: #000000; margin-bottom: 3px; }
+    h1 .small { font-size: 0.4em; }
+    h1 a { text-decoration: none }
+    h2 { font-size: 1.5em; color: #000000; }
+    h3 { text-align: center; color: #000000; }
+    a { color: #000000; }
+    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+    .download { float: right; }
+    pre { background: #000; color: #fff; padding: 15px;}
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .footer { text-align:center; padding-top:30px; font-style: italic; }
+	img { border: 0; }
+	p.ec { font-style : italic;}
+  </style>
+</head>
+
+<body>
+<div id="container">
+<h1>pyks.documentation()</h1>
+
+<br/>
+
+<h2>pyks.get_current_ks()</h2>
+
+<p>Returns the current kilosecond time as a float integer.</p>
+<p>Takes no arguments.</p>
+
+<p class="ec">Example code (Python 3.2):</p>
+
+<pre>import pyks
+import time
+
+local_time = time.localtime()
+print('The current time is:', time.strftime('%H:%M:%S',local_time))
+print('In kiloseconds, this is: {0}'.format(get_current_ks()))</pre>
+
+<br/>
+
+<h2>pyks.time_to_ks(local_time)</h2>
+
+<p>Converts a struct_time object into a kilosecond value.</p>
+<p>Returns as a float integer.</p>
+<p>Takes exactly one argument:</p>
+
+<ul><li>local_time - The struct_time object to convert</li></ul>
+
+<p>Note: Argument local_time's naming is due to the fact that it is an internally used function in the get_current_ks() function, although it can be used externally.</p>
+
+<p class="ec">Example code (Python 3.2):</p>
+
+<pre>import pyks
+import time
+
+print(pyks.time_to_ks(time.localtime()))</pre>
+
+<br/>
+
+<h2>pyks.ks_to_human(kilosecond)</h2>
+
+<p>Takes a kilosecond value and converts it to a human-readable HH:MM:SS time string</p>
+<p>Returns as string</p>
+<p>Takes exactly one argument:</p>
+
+<ul><li>kilosecond - The value to convert to an HH:MM:SS time string</li></ul>
+
+<p>Note: The same effect can be acheived using pyks.format_ks(ks, format_ks) and setting the argument 'format_ks' to '%H:%M:%S'</p>
+<p class="ec">Example code (Python 3.2):</p>
+
+<pre>import pyks
+
+print(pyks.ks_to_human(42))
+</pre>
+
+<br/>
+
+<h2>pyks.format_ks(ks, format_ks)</h2>
+
+<p>Formats a kilosecond value using the format_ks argument.</p>
+<p>Takes exactly two arguments:</p>
+
+<ul><li>ks - The kilosecond as a float integer.</li>
+<li>format_ks - The string to format the ks against.</li></ul>
+
+<h5>format_ks usage</h5>
+
+<p>The format_ks argument takes the same type of argument as the time.strftime() function. Where:</p>
+<ul>
+<li>'%H' corresponds to the hours section of the time string.</li>
+<li>'%M' corresponds to the minutes section of the time string.</li>
+<li>'%S' corresponds to the seconds section of the time string.</li>
+</ul>
+<p>These components can be assembled in any way to create a time string from a ks value</p>
+
+<p class="ec">Example code (Python 3.2):</p>
+
+<pre>import pyks
+
+# Define some time strings
+
+hhmmss = '%H:%M:%S'
+hhmm = '%H:%M'
+mmss = '%M:%S'
+# Other symbols can be used in between
+ssmmhh = '%S-%M-%H'
+
+# Add the current ks to a variable
+
+thisks = pyks.get_current_ks()
+
+# Format the ks
+
+print(pyks.format_ks(thisks, hhmmss))
+print(pyks.format_ks(thisks, hhmm))
+print(pyks.format_ks(thisks, mmss))
+print(pyks.format_ks(thisks, ssmmhh))
+</pre>
+<div class="footer">get the source code on GitHub : <a href="http://github.com/cbooth/pyks" title="The Pyks Project on GitHub" target="_blank">cbooth/pyks</a>
+<br/>
+<div align="right"><a href="http://creativecommons.org/licenses/by-sa/3.0/" title="CC BY-SA 3.0" target="_blank" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</div>
+</div>
+</div>
+</body>
+</html>
