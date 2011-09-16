@@ -1,11 +1,16 @@
 #!/usr/bin/env python
 
 """Python Kiloseconds Manipulation Module
-Version: 1.0.1
+Version: 1.0.2
 Created by Callum Booth (callumwbooth@gmail.com)
 Creative Commons Attribution-ShareAlike 3.0 Unported License (CC BY-SA 3.0)
 Homepage: https://cbooth.github.com/pyks
 Based on the Python code from: https://github.com/bavardage/Kiloseconds
+"""
+
+ks_information = """A kilosecond is 1000 seconds (16 minutes, 40 seconds)
+86.4 kiloseconds in a 24 hour day
+604.8 kiloseconds in a week
 """
 
 import time
@@ -43,6 +48,9 @@ def format_ks(ks, format_ks):
                 raise
         
         return formatted_string
+
+def about_ks():
+        return ks_information
 
 if __name__ == '__main__':
         local_time = time.localtime()
